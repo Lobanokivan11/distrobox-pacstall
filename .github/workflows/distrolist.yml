@@ -96,7 +96,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           add-paths: distrolist
-          base: master
+          base: main
           branch: update-distrolist-${{ env.dl_hash }}
           title: ${{ env.distlist_title }}
           body: ${{ env.distlist_body }}
