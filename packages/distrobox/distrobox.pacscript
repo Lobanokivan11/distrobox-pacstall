@@ -14,7 +14,7 @@ optdepends=(
 )
 
 makedepends=(
-  "golang"
+  "go"
   "make"
 )
 
