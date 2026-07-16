@@ -23,5 +23,5 @@ depends=(
 
 package() {
   cd "${pkgname}~${pkgver}"
-  ./install -P "${pkgdir}/usr" --v2
+  ./install -P "${pkgdir}/usr" --v2 --verbose
 }
