@@ -17,6 +17,8 @@ depends=(
   "curl"
   "tar"
   "gzip"
+  "wget"
+  "coreutils"
 )
 
 package() {
