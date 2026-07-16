@@ -1,5 +1,5 @@
 pkgname="distrobox"
-arch=("any")
+arch=("amd64")
 pkgver="4c334118a1334f1616e7c8d24e974c6bbf872d84"
 pkgdesc="Use any linux distribution inside your terminal"
 repology=("project: distrobox")
@@ -11,6 +11,12 @@ breaks=("${pkgname}" "${pkgname}-deb" "${pkgname}-app" "${pkgname}-git")
 optdepends=(
   "docker.io: enable docker usage"
   "podman: enable podman usage"
+)
+
+depends=(
+  "curl"
+  "tar"
+  "gzip"
 )
 
 package() {
