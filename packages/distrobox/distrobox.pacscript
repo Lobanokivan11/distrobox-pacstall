@@ -15,5 +15,5 @@ optdepends=(
 
 package() {
   cd "${pkgname}~${pkgver}"
-  curl -fsSL https://raw.githubusercontent.com/89luca89/distrobox/main/install | sh -s -- --v2 -P "${pkgdir}/usr"
+  ./install -P "${pkgdir}/usr" -V "${pkgver}"
 }
