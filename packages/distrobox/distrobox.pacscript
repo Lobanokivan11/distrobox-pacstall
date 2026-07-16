@@ -31,8 +31,8 @@ package() {
   export PATH="${PATH}:/usr/lib/go/bin:/usr/local/go-bin/bin:/usr/local/go/bin"
   export GOTOOLCHAIN=local
   export GOROOT="/usr/local/go-bin"
-  make build
-  make install DESTDIR="${pkgdir}" PREFIX="/usr"
+  GOROOT="/usr/local/go-bin" make build
+  GOROOT="/usr/local/go-bin" make install DESTDIR="${pkgdir}" PREFIX="/usr"
   install -d "${pkgdir}/usr/share/bash-completion/completions"
   install -d "${pkgdir}/usr/share/zsh/site-functions"
   if [ -f "completions/bash/distrobox" ]; then
