@@ -28,8 +28,9 @@ depends=(
 
 package() {
   cd "${pkgname}~${pkgver}"
-  export PATH="${PATH}:/usr/lib/go/bin:/usr/local/go/bin"
+  export PATH="${PATH}:/usr/lib/go/bin:/usr/lib/go-bin/bin:/usr/local/go/bin"
   export GOTOOLCHAIN=local
+  export GOROOT="/usr/lib/go-bin"
   make build
   make install DESTDIR="${pkgdir}" PREFIX="/usr"
   install -d "${pkgdir}/usr/share/bash-completion/completions"
