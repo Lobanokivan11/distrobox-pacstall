@@ -28,6 +28,9 @@ depends=(
 
 package() {
   cd "${pkgname}~${pkgver}"
+  export PATH="${PATH}:/usr/lib/go/bin:/usr/local/go/bin"
+  export GOTOOLCHAIN=local
+  export GOPROXY=off
   make build
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/man/man1"
