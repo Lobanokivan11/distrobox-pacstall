@@ -20,7 +20,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v7
         with:
-          ref: master
+          ref: main
 
       - name: Generate distrolist
         run: |
