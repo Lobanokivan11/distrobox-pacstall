@@ -30,40 +30,14 @@ package() {
   cd "${pkgname}~${pkgver}"
   export PATH="${PATH}:/usr/lib/go/bin:/usr/local/go/bin"
   export GOTOOLCHAIN=local
-  export GOPROXY=off
   make build
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/share/man/man1"
+  make install DESTDIR="${pkgdir}" PREFIX="/usr"
   install -d "${pkgdir}/usr/share/bash-completion/completions"
   install -d "${pkgdir}/usr/share/zsh/site-functions"
-  install -m 0755 distrobox "${pkgdir}/usr/bin/distrobox"
-  for cmd in assemble create enter ephemeral generate-entry list ls rm stop upgrade; do
-    ln -sf distrobox "${pkgdir}/usr/bin/distrobox-${cmd}"
-  done
-  for helper in init export host-exec; do
-    if [ -f "distrobox-${helper}" ]; then
-      install -m 0755 "distrobox-${helper}" "${pkgdir}/usr/bin/"
-    fi
-  done
-  if [ -d "man/man1" ]; then
-    install -m 0644 man/man1/*.1 "${pkgdir}/usr/share/man/man1/"
-  fi
   if [ -f "completions/bash/distrobox" ]; then
     install -m 0644 completions/bash/distrobox "${pkgdir}/usr/share/bash-completion/completions/"
   fi
   if [ -f "completions/zsh/_distrobox" ]; then
     install -m 0644 completions/zsh/_distrobox "${pkgdir}/usr/share/zsh/site-functions/"
-  fi
-  if [ -d "icons" ]; then
-    install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    if [ -f "icons/terminal-distrobox-icon.svg" ]; then
-      install -m 0644 icons/terminal-distrobox-icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
-    fi
-    for size in 16 22 24 32 36 48 64 72 96 128 256; do
-      if [ -d "icons/${size}x${size}" ]; then
-        install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-        install -m 0644 icons/${size}x${size}/*.png "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/" 2>/dev/null || true
-      fi
-    done
   fi
 }
